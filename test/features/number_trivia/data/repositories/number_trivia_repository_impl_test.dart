@@ -22,9 +22,9 @@ class MNetworkInfo extends Mock implements NetworkInfo {}
 @GenerateMocks([MRemoteDataSource, MLocalDataSource, MNetworkInfo])
 void main() {
   late NumberTriviaRepositoryImpl repository;
-  late MRemoteDataSource mockRemoteDataSource;
-  late MLocalDataSource mockLocalDataSource;
-  late MNetworkInfo mockNetworkInfo;
+  late MockMRemoteDataSource mockRemoteDataSource;
+  late MockMLocalDataSource mockLocalDataSource;
+  late MockMNetworkInfo mockNetworkInfo;
 
   setUp(() {
     mockRemoteDataSource = MockMRemoteDataSource();
@@ -80,7 +80,7 @@ void main() {
         'should return remote data when the call to remote data source is successful',
         () async {
           // arrange
-          when(mockRemoteDataSource.getConcreteNumberTrivia(1))
+          when(mockRemoteDataSource.getConcreteNumberTrivia(any))
               .thenAnswer((_) async => tNumberTriviaModel);
           // act
           final result = await repository.getConcreteNumberTrivia(tNumber);
@@ -94,7 +94,7 @@ void main() {
         'should cache the data locally when the call to remote data source is successful',
         () async {
           // arrange
-          when(mockRemoteDataSource.getConcreteNumberTrivia(1))
+          when(mockRemoteDataSource.getConcreteNumberTrivia(any))
               .thenAnswer((_) async => tNumberTriviaModel);
           // act
           await repository.getConcreteNumberTrivia(tNumber);
@@ -108,7 +108,7 @@ void main() {
         'should return server failure when the call to remote data source is unsuccessful',
         () async {
           // arrange
-          when(mockRemoteDataSource.getConcreteNumberTrivia(1))
+          when(mockRemoteDataSource.getConcreteNumberTrivia(any))
               .thenThrow(ServerException());
           // act
           final result = await repository.getConcreteNumberTrivia(tNumber);

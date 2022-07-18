@@ -16,7 +16,7 @@ class MSharedPreferences extends Mock implements SharedPreferences {}
 @GenerateMocks([MSharedPreferences])
 void main() {
   late NumberTriviaLocalDataSourceImpl dataSource;
-  late MSharedPreferences mockSharedPreferences;
+  late MockMSharedPreferences mockSharedPreferences;
 
   setUp(() {
     mockSharedPreferences = MockMSharedPreferences();
@@ -33,7 +33,7 @@ void main() {
       'should return NumberTrivia from SharedPreferences when there is one in the cache',
       () async {
         // arrange
-        when(mockSharedPreferences.getString(CACHED_NUMBER_TRIVIA))
+        when(mockSharedPreferences.getString(any))
             .thenReturn(fixture('trivia_cached.json'));
         // act
         final result = await dataSource.getLastNumberTrivia();
@@ -47,8 +47,7 @@ void main() {
       'should throw a CacheException when there is not a cached value',
       () async {
         // arrange
-        when(mockSharedPreferences.getString(CACHED_NUMBER_TRIVIA))
-            .thenReturn(null);
+        when(mockSharedPreferences.getString(any)).thenReturn(null);
         // act
         final call = dataSource.getLastNumberTrivia;
         // assert
@@ -57,22 +56,26 @@ void main() {
     );
   });
 
-  // group('cacheNumberTrivia', () {
-  //   const tNumberTriviaModel =
-  //       NumberTriviaModel(number: 1, text: 'test trivia');
-  //
-  //   test(
-  //     'should call SharedPreferences to cache the data',
-  //     () async {
-  //       // act
-  //       dataSource.cacheNumberTrivia(tNumberTriviaModel);
-  //       // assert
-  //       final expectedJsonString = json.encode(tNumberTriviaModel.toJson());
-  //       verify(mockSharedPreferences.setString(
-  //         CACHED_NUMBER_TRIVIA,
-  //         expectedJsonString,
-  //       ));
-  //     },
-  //   );
-  // });
+  group('cacheNumberTrivia', () {
+    const tNumberTriviaModel = NumberTriviaModel(number: 1, text: 'test');
+
+    test(
+      'should call SharedPreferences to cache the data',
+      () async {
+        // arrange
+        when(mockSharedPreferences.setString(any, any))
+            .thenAnswer((_) async => true);
+        // act
+        dataSource.cacheNumberTrivia(tNumberTriviaModel);
+        // assert
+        final expectedJsonString = json.encode(tNumberTriviaModel.toJson());
+        verify(
+          mockSharedPreferences.setString(
+            CACHED_NUMBER_TRIVIA,
+            expectedJsonString,
+          ),
+        );
+      },
+    );
+  });
 }
