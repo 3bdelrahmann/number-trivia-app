@@ -13,23 +13,18 @@ import 'package:number_trivia_app_clean_tdd/features/number_trivia/domain/entiti
 
 import 'number_trivia_repository_impl_test.mocks.dart';
 
-class MRemoteDataSource extends Mock implements NumberTriviaRemoteDataSource {}
-
-class MLocalDataSource extends Mock implements NumberTriviaLocalDataSource {}
-
-class MNetworkInfo extends Mock implements NetworkInfo {}
-
-@GenerateMocks([MRemoteDataSource, MLocalDataSource, MNetworkInfo])
+@GenerateMocks(
+    [NumberTriviaRemoteDataSource, NumberTriviaLocalDataSource, NetworkInfo])
 void main() {
   late NumberTriviaRepositoryImpl repository;
-  late MockMRemoteDataSource mockRemoteDataSource;
-  late MockMLocalDataSource mockLocalDataSource;
-  late MockMNetworkInfo mockNetworkInfo;
+  late MockNumberTriviaRemoteDataSource mockRemoteDataSource;
+  late MockNumberTriviaLocalDataSource mockLocalDataSource;
+  late MockNetworkInfo mockNetworkInfo;
 
   setUp(() {
-    mockRemoteDataSource = MockMRemoteDataSource();
-    mockLocalDataSource = MockMLocalDataSource();
-    mockNetworkInfo = MockMNetworkInfo();
+    mockRemoteDataSource = MockNumberTriviaRemoteDataSource();
+    mockLocalDataSource = MockNumberTriviaLocalDataSource();
+    mockNetworkInfo = MockNetworkInfo();
     repository = NumberTriviaRepositoryImpl(
       remoteDataSource: mockRemoteDataSource,
       localDataSource: mockLocalDataSource,

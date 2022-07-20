@@ -9,8 +9,8 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:number_trivia_app_clean_tdd/core/error/failures.dart' as _i5;
 import 'package:number_trivia_app_clean_tdd/features/number_trivia/domain/entities/number_trivia.dart'
     as _i6;
-
-import 'get_number_trivia_test.dart' as _i2;
+import 'package:number_trivia_app_clean_tdd/features/number_trivia/domain/repositories/number_trivia_repository.dart'
+    as _i2;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -22,12 +22,12 @@ import 'get_number_trivia_test.dart' as _i2;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-/// A class which mocks [MNumberTriviaRepository].
+/// A class which mocks [NumberTriviaRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockMNumberTriviaRepository extends _i1.Mock
-    implements _i2.MNumberTriviaRepository {
-  MockMNumberTriviaRepository() {
+class MockNumberTriviaRepository extends _i1.Mock
+    implements _i2.NumberTriviaRepository {
+  MockNumberTriviaRepository() {
     _i1.throwOnMissingStub(this);
   }
 

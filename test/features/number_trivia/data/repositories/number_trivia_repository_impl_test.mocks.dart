@@ -5,10 +5,14 @@
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:number_trivia_app_clean_tdd/core/network/network_info.dart'
+    as _i6;
+import 'package:number_trivia_app_clean_tdd/features/number_trivia/data/data_sources/number_trivia_local_data_source.dart'
+    as _i5;
+import 'package:number_trivia_app_clean_tdd/features/number_trivia/data/data_sources/number_trivia_remote_data_source.dart'
+    as _i3;
 import 'package:number_trivia_app_clean_tdd/features/number_trivia/data/models/number_trivia_model.dart'
     as _i2;
-
-import 'number_trivia_repository_impl_test.dart' as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -23,11 +27,12 @@ import 'number_trivia_repository_impl_test.dart' as _i3;
 class _FakeNumberTriviaModel_0 extends _i1.Fake
     implements _i2.NumberTriviaModel {}
 
-/// A class which mocks [MRemoteDataSource].
+/// A class which mocks [NumberTriviaRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockMRemoteDataSource extends _i1.Mock implements _i3.MRemoteDataSource {
-  MockMRemoteDataSource() {
+class MockNumberTriviaRemoteDataSource extends _i1.Mock
+    implements _i3.NumberTriviaRemoteDataSource {
+  MockNumberTriviaRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
@@ -45,11 +50,12 @@ class MockMRemoteDataSource extends _i1.Mock implements _i3.MRemoteDataSource {
           as _i4.Future<_i2.NumberTriviaModel>);
 }
 
-/// A class which mocks [MLocalDataSource].
+/// A class which mocks [NumberTriviaLocalDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockMLocalDataSource extends _i1.Mock implements _i3.MLocalDataSource {
-  MockMLocalDataSource() {
+class MockNumberTriviaLocalDataSource extends _i1.Mock
+    implements _i5.NumberTriviaLocalDataSource {
+  MockNumberTriviaLocalDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
@@ -67,11 +73,11 @@ class MockMLocalDataSource extends _i1.Mock implements _i3.MLocalDataSource {
           returnValueForMissingStub: Future<void>.value()) as _i4.Future<void>);
 }
 
-/// A class which mocks [MNetworkInfo].
+/// A class which mocks [NetworkInfo].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockMNetworkInfo extends _i1.Mock implements _i3.MNetworkInfo {
-  MockMNetworkInfo() {
+class MockNetworkInfo extends _i1.Mock implements _i6.NetworkInfo {
+  MockNetworkInfo() {
     _i1.throwOnMissingStub(this);
   }
 

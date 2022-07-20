@@ -11,15 +11,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../fixtures/fixture_reader.dart';
 import 'number_trivia_local_data_source_test.mocks.dart';
 
-class MSharedPreferences extends Mock implements SharedPreferences {}
-
-@GenerateMocks([MSharedPreferences])
+@GenerateMocks([SharedPreferences])
 void main() {
   late NumberTriviaLocalDataSourceImpl dataSource;
-  late MockMSharedPreferences mockSharedPreferences;
+  late MockSharedPreferences mockSharedPreferences;
 
   setUp(() {
-    mockSharedPreferences = MockMSharedPreferences();
+    mockSharedPreferences = MockSharedPreferences();
     dataSource = NumberTriviaLocalDataSourceImpl(
       sharedPreferences: mockSharedPreferences,
     );

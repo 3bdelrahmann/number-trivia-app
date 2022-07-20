@@ -6,16 +6,13 @@ import 'package:number_trivia_app_clean_tdd/core/network/network_info.dart';
 
 import 'network_info_test.mocks.dart';
 
-class MDataConnectionChecker extends Mock implements InternetConnectionChecker {
-}
-
-@GenerateMocks([MDataConnectionChecker])
+@GenerateMocks([InternetConnectionChecker])
 void main() {
   late NetworkInfoImpl networkInfo;
-  late MDataConnectionChecker mockDataConnectionChecker;
+  late MockInternetConnectionChecker mockDataConnectionChecker;
 
   setUp(() {
-    mockDataConnectionChecker = MockMDataConnectionChecker();
+    mockDataConnectionChecker = MockInternetConnectionChecker();
     networkInfo = NetworkInfoImpl(mockDataConnectionChecker);
   });
 
